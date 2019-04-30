@@ -1,7 +1,9 @@
 import pygame
+from pygame.sprite import Group
 
 from settings import Settings
 from player import Player
+from bullet import Bullet
 
 class Game():
     '''Common game functions'''
@@ -14,6 +16,7 @@ class Game():
         pygame.display.set_caption("Space War")
 
         self.player = Player(self.screen, self.settings)
+        self.bullets = Group()  # Player bullets
 
 
     def process_input(self):
@@ -26,6 +29,8 @@ class Game():
                     self.player.move_right()
                 elif event.key == pygame.K_LEFT:
                     self.player.move_left()
+                elif event.key == pygame.K_SPACE:
+                    self.bullets.add(Bullet(self.settings, self.screen, self.player))
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
                     self.player.stop_moving()
@@ -35,6 +40,17 @@ class Game():
     def update_screen(self):
         '''Draw all game elements on the screen'''
         self.screen.fill(self.settings.bg_color)
+        self.bullets.update()
+
+        # Remove bullets that have exited the screen
+        for bullet in self.bullets.copy():
+            if(bullet.rect.bottom < 0):
+                self.bullets.remove(bullet)
+
+        # Draw all bullets
+        for bullet in self.bullets:
+            bullet.blitme()
+
         self.player.blitme()
 
         # Draw the screen

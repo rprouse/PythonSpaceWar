@@ -1,4 +1,7 @@
 {
   "python.pythonPath": "env\\Scripts\\python.exe",
-  "python.linting.enabled": false
+  "python.linting.enabled": false,
+  "files.exclude": {
+    "__pycache__": true
+  }
 }
