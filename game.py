@@ -21,6 +21,14 @@ class Game():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.player.move_right()
+                elif event.key == pygame.K_LEFT:
+                    self.player.move_left()
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
+                    self.player.stop_moving()
 
         return True
 
