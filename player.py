@@ -8,13 +8,15 @@ class Player():
         self.screen = screen
 
         # Load the player image
-        self.image = pygame.image.load('images/player.bmp')
+        image = pygame.image.load('images/player.bmp')
+        rect = image.get_rect()
+        self.image = pygame.transform.scale(image, (rect.width * 4, rect.height * 4))
         self.rect = self.image.get_rect()
         self.screen_rect = self.screen.get_rect()
 
         # Start at the center of the screen
         self.rect.centerx = self.screen_rect.centerx
-        self.rect.bottom = self.screen_rect.bottom
+        self.rect.bottom = self.screen_rect.bottom - 10
 
     def blitme(self):
         '''Draw the player at the current location'''
