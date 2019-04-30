@@ -2,13 +2,14 @@ import sys
 import pygame
 # from pygame.locals import *
 
+from settings import Settings
+
 def main():
     # Initialize the game
     pygame.init()
-    screen = pygame.display.set_mode((1200, 800))
+    game_settings = Settings()
+    screen = pygame.display.set_mode((game_settings.screen_width, game_settings.screen_height))
     pygame.display.set_caption("Space War")
-
-    bg_color = (10, 30, 60)
 
     # Main game loop
     while(True):
@@ -17,7 +18,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        screen.fill(bg_color)
+        screen.fill(game_settings.bg_color)
 
         # Draw the screen
         pygame.display.flip()
