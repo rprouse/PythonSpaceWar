@@ -3,6 +3,7 @@ import pygame
 # from pygame.locals import *
 
 from settings import Settings
+from player import Player
 
 def main():
     # Initialize the game
@@ -10,6 +11,8 @@ def main():
     game_settings = Settings()
     screen = pygame.display.set_mode((game_settings.screen_width, game_settings.screen_height))
     pygame.display.set_caption("Space War")
+
+    player = Player(screen)
 
     # Main game loop
     while(True):
@@ -19,6 +22,7 @@ def main():
                 return
 
         screen.fill(game_settings.bg_color)
+        player.blitme()
 
         # Draw the screen
         pygame.display.flip()
