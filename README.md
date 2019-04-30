@@ -1,2 +1,3 @@
-# PythonSpaceWar
-I want to practice my Python, so what better way than a Space Invaders clone written using pygame?
+# Space War
+
+A Space Invaders clone written in Python using pygame to give me a chance to practice using Python.
