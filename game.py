@@ -29,7 +29,7 @@ class Game():
                     self.player.move_right()
                 elif event.key == pygame.K_LEFT:
                     self.player.move_left()
-                elif event.key == pygame.K_SPACE:
+                elif event.key == pygame.K_SPACE and len(self.bullets) < self.settings.num_bullets:
                     self.bullets.add(Bullet(self.settings, self.screen, self.player))
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
