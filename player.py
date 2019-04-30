@@ -3,9 +3,10 @@ import pygame
 class Player():
     '''Represents the player in the game'''
 
-    def __init__(self, screen):
+    def __init__(self, screen, settings):
         '''Initializes the player and it's starting position'''
         self.screen = screen
+        self.settings = settings
 
         # Load the player image
         image = pygame.image.load('images/player.bmp')
@@ -18,7 +19,7 @@ class Player():
         self.moving_right = False
 
         # Start at the center of the screen
-        self.rect.centerx = self.screen_rect.centerx
+        self.centerx = float(self.screen_rect.centerx)
         self.rect.bottom = self.screen_rect.bottom - 10
 
     def move_right(self):
@@ -34,8 +35,9 @@ class Player():
     def blitme(self):
         '''Draw the player at the current location'''
         if self.moving_right:
-            self.rect.x += 1
+            self.centerx += self.settings.player_speed
         elif self.moving_left:
-            self.rect.x -= 1
+            self.centerx -= self.settings.player_speed
+        self.rect.centerx = self.centerx
 
         self.screen.blit(self.image, self.rect)

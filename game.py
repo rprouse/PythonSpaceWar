@@ -13,7 +13,7 @@ class Game():
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Space War")
 
-        self.player = Player(self.screen)
+        self.player = Player(self.screen, self.settings)
 
 
     def process_input(self):
