@@ -34,9 +34,9 @@ class Player():
 
     def blitme(self):
         '''Draw the player at the current location'''
-        if self.moving_right:
+        if self.moving_right and self.rect.right < self.screen_rect.right - self.settings.player_speed:
             self.centerx += self.settings.player_speed
-        elif self.moving_left:
+        elif self.moving_left and self.rect.left > self.settings.player_speed:
             self.centerx -= self.settings.player_speed
         self.rect.centerx = self.centerx
 
